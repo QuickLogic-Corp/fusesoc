@@ -11,6 +11,10 @@ import subprocess
 import sys
 import warnings
 
+sys.path.append('~/edalize')
+sys.path.append('~/edalize/edalize')
+sys.path.append('/home/gmartin/.local/lib/python3.5/site-packages/')
+
 from fusesoc import __version__
 
 # Check if this is run from a local installation

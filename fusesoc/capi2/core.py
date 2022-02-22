@@ -355,11 +355,13 @@ class Core:
                 _src_files.append(_f)
         return _src_files
 
-    def get_generators(self):
+    def get_generators(self, flags):
+        self._debug("Getting generators for flags {}".format(str(flags)))
         generators = {}
         for k, v in self.generators.items():
             generators[k] = v
             generators[k].root = self.files_root
+            self._debug(" Found generator " + k)
         return generators
 
     def get_parameters(self, flags={}, ext_parameters={}):
@@ -995,6 +997,10 @@ CAPI2 expressions return a value depending on a :ref:`flag <ug_build_system_flag
    **Quotation marks are required** for strings starting with an exclamation mark (``!``), but :ref:`always recommended <ug_build_system_core_files_yaml_intro>`.
 
 Refer to the section :ref:`ug_build_system_flags` in the User Guide for more information on flags.
+
+**Example** Only include fileset *verilator_tb* when the target is used with verilator
+``filesets : [rtl, tb, tool_verilator? (verilator_tb)]``
+
 
 StringWithUseFlagsOrDict
 ~~~~~~~~~~~~~~~~~~~~~~~~
